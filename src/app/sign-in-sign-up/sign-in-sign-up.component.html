@@ -1,0 +1,20 @@
+<div class="login-page">
+    <div class="form">
+
+        <form class="register-form" *ngIf="!isSignedIn && !toogleSignInUp">
+            <input type="text" placeholder="Email" #emailSignup />
+            <input type="text" placeholder="Password" #passwordSignup />
+            <button (click)="onSignup(emailSignup.value,passwordSignup.value)">Sign Up</button>
+            <p class="message">Already Registered? <span (click)="forLogIn()">Login</span></p>
+        </form>
+        <form class="login-form" *ngIf="!isSignedIn && toogleSignInUp">
+            <input type="text" placeholder="Email" #email />
+            <input type="password" placeholder="Password" #password />
+            <button (click)="onSignin(email.value,password.value)">Login</button>
+            <p class="message">Not a Registered? <span (click)="forRegister()">Register</span></p>
+        </form>
+
+    </div>
+</div>
+
+<app-home *ngIf="isSignedIn" (isLogout)="handleLogout()"></app-home>
